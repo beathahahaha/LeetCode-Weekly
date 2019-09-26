@@ -1,8 +1,11 @@
 def plusOne(digits: list):
-    x = 0
-    power = 1
-    while digits:
-        x = x + digits.pop() * power
-        power = power * 10
-    out = [int(i) for i in (str(x+1))]
-    return out
+    if not digits:
+        return [1]
+    else:
+        x = digits.pop()
+        if x == 9:
+            digits=plusOne(digits)
+            digits.append(0)
+        else:
+            digits.append(x + 1)
+        return digits
